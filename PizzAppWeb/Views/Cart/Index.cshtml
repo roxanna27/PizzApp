@@ -1,0 +1,62 @@
+﻿@using PizzAppWeb.Models
+@model IEnumerable<CartItem>
+@{
+    ViewData["Title"] = "Coșul Meu";
+}
+
+<h1 class="text-center my-4">🛒 Coșul Meu</h1>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">
+        Coșul tău este gol. Adaugă produse din meniu!
+    </div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Produs</th>
+                <th>Preț</th>
+                <th>Cantitate</th>
+                <th>Total</th>
+                <th>Acțiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Product.Price.ToString("N2") RON</td>
+                    <td>
+                        <form asp-action="Update" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <input type="number" name="quantity" value="@item.Quantity" min="1" class="form-control d-inline-block" style="width:70px;" />
+                            <button type="submit" class="btn btn-danger btn-sm mt-1">Actualizează</button>
+                        </form>
+                    </td>
+                    <td>@((item.Product.Price * item.Quantity).ToString("N2")) RON</td>
+                    <td>
+                        <form asp-action="Remove" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Elimină</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-end mb-3">
+        @{
+            decimal grandTotal = Model.Sum(x => x.Product.Price * x.Quantity);
+        }
+        <h4>Total: <span class="text-danger">@grandTotal.ToString("N2") RON</span></h4>
+    </div>
+    <div class="text-center">
+        <form asp-action="PlaceOrder" method="post">
+            <button type="submit" class="btn btn-danger btn-lg">Plasează Comanda</button>
+        </form>
+    </div>
+}

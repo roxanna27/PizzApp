@@ -1,0 +1,38 @@
+﻿@using PizzAppWeb.Models
+@model IEnumerable<Review>
+@{
+    ViewData["Title"] = "Recenziile mele";
+}
+
+<h1 class="text-center my-4">⭐ Recenziile mele</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">
+        Nu ai lăsat încă nicio recenzie.
+    </div>
+}
+else
+{
+    <div class="list-group">
+        @foreach (var review in Model)
+        {
+            <div class="list-group-item">
+                <h5>Comanda #@review.OrderId - Rating: @review.Rating ⭐</h5>
+                <p>@review.Comment</p>
+                <small class="text-muted">Data: @review.ReviewDate.ToString("dd/MM/yyyy HH:mm")</small>
+                <div class="mt-2">
+                    <a class="btn btn-warning btn-sm" asp-controller="Reviews" asp-action="Edit" asp-route-id="@review.Id">✏️ Editează</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Reviews" asp-action="Delete" asp-route-id="@review.Id">🗑️ Șterge</a>
+                </div>
+            </div>
+        }
+    </div>
+}

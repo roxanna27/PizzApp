@@ -1,0 +1,50 @@
+﻿@using PizzAppWeb.Models
+@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "Comenzile Mele";
+}
+
+<h1 class="text-center my-4">📦 Comenzile Mele</h1>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info text-center">
+        Nu ai plasat nicio comandă până acum.
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var order in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <strong>Comanda #@order.Id</strong>
+                        <span class="float-end">@order.OrderDate.ToString("g")</span>
+                    </div>
+                    <div class="card-body">
+                        <p>Total: <span class="fw-bold text-success">@order.TotalAmount.ToString("N2") RON</span></p>
+                        <p>
+                            @if (order.Review == null)
+                            {
+                                <a class="btn btn-danger btn-sm" asp-controller="Reviews" asp-action="Create" asp-route-orderId="@order.Id">
+                                    Adaugă Recenzie
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-warning btn-sm" asp-controller="Reviews" asp-action="Edit" asp-route-id="@order.Review.Id">
+                                    Editează Recenzie
+                                </a>
+                            }
+                            <a class="btn btn-info btn-sm" asp-controller="Orders" asp-action="Details" asp-route-id="@order.Id">
+                                Detalii
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

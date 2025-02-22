@@ -1,0 +1,43 @@
+﻿@using PizzAppWeb.Models
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Meniu Pizzerie";
+}
+
+<h1 class="text-center my-4">🍕 Meniu Pizzerie</h1>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="text-end mb-3">
+        <a class="btn btn-danger" asp-action="Create">➕ Adaugă Produs</a>
+    </div>
+}
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">🍕 @product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text fw-bold text-danger">@product.Price.ToString("N2") RON</p>
+                </div>
+                <div class="card-footer bg-white">
+                    <form asp-controller="Cart" asp-action="Add" method="post" class="d-inline">
+                        <input type="hidden" name="productId" value="@product.Id" />
+                        <input type="number" name="quantity" value="1" min="1" class="form-control d-inline-block" style="width:70px; margin-right: 5px;" />
+                        <button type="submit" class="btn btn-danger btn-sm">🛒 Adaugă</button>
+                    </form>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="float-end">
+                            <a class="btn btn-danger btn-sm" asp-action="Edit" asp-route-id="@product.Id">✏️ Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@product.Id">🗑️ Delete</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

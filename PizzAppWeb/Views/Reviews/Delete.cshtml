@@ -1,0 +1,24 @@
+﻿@using PizzAppWeb.Models
+@model Review
+@{
+    ViewData["Title"] = "Șterge Recenzie";
+}
+<h1 class="text-center my-4">🗑️ Șterge Recenzie</h1>
+
+<div class="alert alert-warning text-center">
+    Ești sigur că vrei să ștergi această recenzie?
+</div>
+
+<div class="text-center mb-3">
+    <h5>Comanda #@Model.OrderId - Rating: @Model.Rating ⭐</h5>
+    <p>@Model.Comment</p>
+    <small class="text-muted">Data: @Model.ReviewDate.ToString("g")</small>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="text-center">
+        <button type="submit" class="btn btn-danger">Confirmă Ștergerea</button>
+        <a asp-action="Index" class="btn btn-secondary">Anulează</a>
+    </div>
+</form>
