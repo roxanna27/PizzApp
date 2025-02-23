@@ -7,7 +7,7 @@ using PizzAppWeb.Models;
 
 namespace PizzAppWeb.Controllers
 {
-    [Authorize] // Toate acțiunile necesită autentificare
+     // Toate acțiunile necesită autentificare
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;

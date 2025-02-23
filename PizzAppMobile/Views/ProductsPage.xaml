@@ -1,0 +1,61 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzAppMobile.Views.ProductsPage"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Label Text="🍕 Meniu PizzApp" 
+                   FontSize="26" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"
+                   TextColor="Red"
+                   Margin="0,0,0,10"/>
+
+            <!-- Buton pentru accesarea coșului -->
+            <Button Text="🛒 Vezi coșul"
+                    Clicked="OnViewCartClicked"
+                    BackgroundColor="DarkGreen"
+                    TextColor="White"
+                    CornerRadius="8"
+                    Padding="10"
+                    FontSize="16"/>
+
+            <!-- Lista produselor -->
+            <CollectionView x:Name="ProductListView" ItemsSource="{Binding Products}" Margin="10">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" CornerRadius="10" HasShadow="True" BackgroundColor="White">
+                            <StackLayout Spacing="5">
+                                <Label Text="{Binding Name}" 
+                                       FontSize="18" 
+                                       FontAttributes="Bold" 
+                                       TextColor="Black"
+                                       HorizontalOptions="Center"/>
+
+                                <Label Text="{Binding Price, StringFormat='Preț: {0} RON'}"
+                                       FontSize="16" 
+                                       FontAttributes="Bold" 
+                                       TextColor="Green"
+                                       HorizontalOptions="Center"
+                                       Margin="0,0,0,5"/>
+
+                                <Button Text="➕ Adaugă în coș"
+                                        Clicked="OnAddToCartClicked"
+                                        BackgroundColor="Red"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        Padding="5"
+                                        FontSize="16"
+                                        HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -10,7 +10,6 @@ using PizzAppWeb.Models;
 
 namespace PizzAppWeb.Controllers
 {
-    [Authorize]
     public class OrdersController : Controller
     {
         private readonly ApplicationDbContext _context;

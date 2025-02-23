@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35818.85 d17.13
+VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzAppWeb", "PizzAppWeb\PizzAppWeb.csproj", "{7462CED9-404D-429B-BE2C-00932C9F545E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzAppMobile", "PizzAppMobile\PizzAppMobile.csproj", "{4C84A7B7-27D3-41D9-97A9-A51D6BCE7E97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{7462CED9-404D-429B-BE2C-00932C9F545E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7462CED9-404D-429B-BE2C-00932C9F545E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7462CED9-404D-429B-BE2C-00932C9F545E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C84A7B7-27D3-41D9-97A9-A51D6BCE7E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C84A7B7-27D3-41D9-97A9-A51D6BCE7E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C84A7B7-27D3-41D9-97A9-A51D6BCE7E97}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4C84A7B7-27D3-41D9-97A9-A51D6BCE7E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C84A7B7-27D3-41D9-97A9-A51D6BCE7E97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C84A7B7-27D3-41D9-97A9-A51D6BCE7E97}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

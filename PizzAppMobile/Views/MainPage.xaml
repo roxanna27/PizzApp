@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzAppMobile.Views.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+
+            <!-- Imaginea -->
+            <Image Source="dotnet_bot.png"
+                   HeightRequest="185"
+                   Aspect="AspectFit"
+                   SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <!-- Titlul principal -->
+            <Label Text="🍕 Bine ai venit la PizzApp!"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#D32F2F"
+                   SemanticProperties.HeadingLevel="Level1"/>
+
+            <!-- Subtitlu -->
+            <Label Text="Comandă pizza rapid și simplu"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   TextColor="Gray"
+                   SemanticProperties.HeadingLevel="Level2"/>
+
+            <!-- Butonul de acces la meniul de pizza -->
+            <Button Text="🍕 Vezi Meniul"
+                    Clicked="OnMenuClicked"
+                    BackgroundColor="DarkRed"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontSize="18"
+                    HorizontalOptions="FillAndExpand"/>
+
+            <!-- Butonul de acces la coșul de cumpărături -->
+            <Button Text="🛒 Vezi Coșul"
+                    Clicked="OnCartClicked"
+                    BackgroundColor="DarkGreen"
+                    TextColor="White"
+                    CornerRadius="10"
+                    FontSize="18"
+                    HorizontalOptions="FillAndExpand"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

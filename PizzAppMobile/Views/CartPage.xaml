@@ -1,0 +1,76 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzAppMobile.Views.CartPage"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Label Text="🛒 Coș de cumpărături" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"
+                   TextColor="Red"
+                   Margin="0,0,0,10"/>
+
+            <CollectionView x:Name="CartListView" ItemsSource="{Binding CartItems}" Margin="10">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" CornerRadius="10" HasShadow="True" BackgroundColor="White">
+                            <StackLayout Spacing="5">
+                                <Label Text="{Binding Product.Name}" 
+                                       FontSize="18" 
+                                       FontAttributes="Bold" 
+                                       TextColor="Black"
+                                       HorizontalOptions="Center"/>
+
+                                <Label Text="{Binding Product.Price, StringFormat='Preț: {0} RON'}"
+                                       FontSize="16" 
+                                       FontAttributes="Bold" 
+                                       TextColor="Green"
+                                       HorizontalOptions="Center"/>
+
+                                <Label Text="{Binding Quantity, StringFormat='Cantitate: {0}'}"
+                                       FontSize="14" 
+                                       TextColor="Gray"
+                                       HorizontalOptions="Center"/>
+
+                                <Button Text="🗑️ Elimină"
+                                        Clicked="OnRemoveFromCartClicked"
+                                        BackgroundColor="Red"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        Padding="5"
+                                        FontSize="16"
+                                        HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Butoane pentru navigare și plasare comandă -->
+            <Button Text="⬅️ Revenire la meniu"
+                    Clicked="OnGoBackClicked"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    CornerRadius="8"
+                    Padding="10"
+                    FontSize="16"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,10,0,0"/>
+
+            <Button Text="📦 Plasează comanda"
+                    Clicked="OnCheckoutClicked"
+                    BackgroundColor="DarkGreen"
+                    TextColor="White"
+                    CornerRadius="8"
+                    Padding="10"
+                    FontSize="16"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,10,0,0"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
